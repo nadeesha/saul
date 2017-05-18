@@ -28,5 +28,9 @@
   "devDependencies": {
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.46.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ncthis/saul"
   }
 }
