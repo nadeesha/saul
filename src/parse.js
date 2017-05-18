@@ -27,7 +27,7 @@ const composeArgs = (match: string[]): TestParams => {
 };
 
 const composeParams = (fileContent: string): Array<TestParams> => {
-  const testLine: RegExp = /\/\/\s@t(?:\s|.)+?(".+"){0,1}(?:\s|.)+?((?:\w)+)\((.*)\)(?:\s|.)+?((?:\w|\d|-)+)(?:\s|.!\w)+(.*)/g;
+  const testLine: RegExp = /\/\/\s@t(?:\s|.)+?(".+?"){0,1}(?:\s|.)+?((?:\w)+)\((.*)\)(?:\s|.)+?((?:\w|\d|-)+)(?:\s|.!\w)+(.*)/g;
 
   let match;
   let paramsArray = [];
