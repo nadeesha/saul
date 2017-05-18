@@ -1,6 +1,6 @@
 {
   "name": "saul",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "description": "An extensible dynamic unit test generator.",
   "main": "lib/index.js",
   "scripts": {
@@ -21,9 +21,11 @@
     "flow-remove-types": "^1.2.1",
     "glob-fs": "^0.1.6",
     "lodash": "^4.17.4",
+    "mocha": "^3.4.1",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "saul": "^0.0.1-alpha"
   },
   "devDependencies": {
     "babel-preset-flow": "^6.23.0",

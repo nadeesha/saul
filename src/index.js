@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { argv } from 'optimist';
 import _ from 'lodash';
 import parse from './parse';
 import organize from './organize';
