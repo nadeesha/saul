@@ -1,0 +1,32 @@
+{
+  "name": "saul",
+  "version": "0.0.1-alpha",
+  "description": "An extensible dynamic unit test generator.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./lib/index.js",
+    "build": "babel src --out-dir lib",
+    "watch": "babel --watch src --out-dir lib",
+    "prepublish": "yarn run build"
+  },
+  "author": "Nadeesha Cabral <nadeesha.cabral@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@emmetio/expand-abbreviation": "^0.5.6",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.8.2",
+    "flow-remove-types": "^1.2.1",
+    "glob-fs": "^0.1.6",
+    "lodash": "^4.17.4",
+    "react": "^15.5.4",
+    "react-addons-test-utils": "^15.5.1",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.46.0"
+  }
+}
