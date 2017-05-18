@@ -2421,6 +2421,42 @@ saul@^0.0.6-alpha:
     react-dom "^15.5.4"
     saul "^0.0.5-alpha"
 
+saul@^0.0.7-alpha:
+  version "0.0.7-alpha"
+  resolved "https://registry.yarnpkg.com/saul/-/saul-0.0.7-alpha.tgz#7ff5d9d01f95eacf896b3043857dd9b85a4a558f"
+  dependencies:
+    "@emmetio/expand-abbreviation" "^0.5.6"
+    babel-cli "^6.24.1"
+    babel-preset-env "^1.4.0"
+    chai "^3.5.0"
+    enzyme "^2.8.2"
+    flow-remove-types "^1.2.1"
+    glob-fs "^0.1.6"
+    lodash "^4.17.4"
+    mocha "^3.4.1"
+    react "^15.5.4"
+    react-addons-test-utils "^15.5.1"
+    react-dom "^15.5.4"
+    saul "^0.0.6-alpha"
+
+saul@^0.0.8-alpha:
+  version "0.0.8-alpha"
+  resolved "https://registry.yarnpkg.com/saul/-/saul-0.0.8-alpha.tgz#96280da272e27d29e48afbc16b78257f3ff188a2"
+  dependencies:
+    "@emmetio/expand-abbreviation" "^0.5.6"
+    babel-cli "^6.24.1"
+    babel-preset-env "^1.4.0"
+    chai "^3.5.0"
+    enzyme "^2.8.2"
+    flow-remove-types "^1.2.1"
+    glob-fs "^0.1.6"
+    lodash "^4.17.4"
+    mocha "^3.4.1"
+    react "^15.5.4"
+    react-addons-test-utils "^15.5.1"
+    react-dom "^15.5.4"
+    saul "^0.0.7-alpha"
+
 semver@^5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"

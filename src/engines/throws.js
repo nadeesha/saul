@@ -7,7 +7,7 @@ export default (
   expected: string
 ) => {
   it(testDescription, () => {
-    const actual = func.apply(null, argsArray);
+    const actual = () => func.apply(null, argsArray);
     expect(actual).to.throw(eval(`${expected}`));
   });
 };

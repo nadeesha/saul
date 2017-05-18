@@ -18,6 +18,7 @@ export const parseArgs = (argsString: string): Array<any> =>
   eval(`[${argsString}]`);
 
 // @t "gets engine" getEngineModule('foo', () => ({ default: 'bar' })) equals 'bar'
+// @t "throws on bad engine" getEngineModule('foo', () => null) throws Error
 export const getEngineModule = (engineName, requireFile = require) => {
   try {
     return requireFile(`./engines/${engineName}.js`).default;
