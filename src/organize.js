@@ -3,20 +3,26 @@ import { TestParams, ExecutableParams } from './types';
 
 require('babel-register');
 
-const getTestableFunction = (filepath: string, funcName: string): Function => {
+const requireFile = require;
+
+export const getTestableFunction = (
+  filepath: string,
+  funcName: string
+): Function => {
   const module = require(filepath);
   return module[funcName];
 };
 
-// @t "parses correctly" parseArgs(0) equals [0]
+// @t "parses correctly" parseArgs(0) deep-equals [0]
 export const parseArgs = (argsString: string): Array<any> =>
   eval(`[${argsString}]`);
 
-const getEngineModule = engineName => {
+// @t "gets engine" getEngineModule('foo', () => ({ default: 'bar' })) equals 'bar'
+export const getEngineModule = (engineName, requireFile = require) => {
   try {
-    return require(`./engines/${testParams.engineName}.js`).default;
+    return requireFile(`./engines/${engineName}.js`).default;
   } catch (e) {
-    throw new Error(`Engine: ${engineFile} is not valid`);
+    throw new Error(`Engine: ${engineName} is not valid`);
   }
 };
 
