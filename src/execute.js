@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { ExecutableParams } from './types';
-import Mocha from 'mocha';
+import mocha from 'mocha';
 
 const groupTestsByFuncName = (
   tests: ExecutableParams
@@ -19,7 +19,7 @@ const executeTest = (executableParams: ExecutableParams) =>
 const executeTestGroup = (
   executableParams: ExecutableParams[],
   funcName: string
-) => describe(funcName, () => _.each(executableParams, executeTest));
+) => mocha.describe(funcName, () => _.each(executableParams, executeTest));
 
 const execute = (executableParams: ExecutableParams) =>
   _(executableParams)

@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import mocha from 'mocha';
 
 export default (
   testDescription: string,
@@ -6,7 +7,7 @@ export default (
   argsArray: Array<any>,
   expected: string
 ) => {
-  it(testDescription, () => {
+  mocha.it(testDescription, () => {
     const actual = () => func.apply(null, argsArray);
     expect(actual).to.throw(eval(`${expected}`));
   });

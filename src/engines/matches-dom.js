@@ -3,6 +3,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { expand } from '@emmetio/expand-abbreviation';
 import _ from 'lodash';
+import mocha from 'mocha';
 
 export default (
   testDescription: string,
@@ -10,7 +11,7 @@ export default (
   argsArray: Array<any>,
   expected: string
 ) => {
-  it(testDescription, () => {
+  mocha.it(testDescription, () => {
     const wrapper = shallow(React.createElement(component, argsArray[0]));
     const actual = wrapper.html();
     // emmet formats and indents expansion.
