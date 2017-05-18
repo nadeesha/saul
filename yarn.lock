@@ -1021,8 +1021,8 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
 
 electron-to-chromium@^1.2.7:
-  version "1.3.10"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.10.tgz#63d62b785471f0d8dda85199d64579de8a449f08"
+  version "1.3.11"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.11.tgz#744761df1d67b492b322ce9aa0aba5393260eb61"
 
 encoding@^0.1.11:
   version "0.1.12"
@@ -2330,6 +2330,24 @@ saul@^0.0.1-alpha:
     react "^15.5.4"
     react-addons-test-utils "^15.5.1"
     react-dom "^15.5.4"
+
+saul@^0.0.2-alpha:
+  version "0.0.2-alpha"
+  resolved "https://registry.yarnpkg.com/saul/-/saul-0.0.2-alpha.tgz#834b44d0edfbdd20d74eaa4432398e4c1be83095"
+  dependencies:
+    "@emmetio/expand-abbreviation" "^0.5.6"
+    babel-cli "^6.24.1"
+    babel-preset-env "^1.4.0"
+    chai "^3.5.0"
+    enzyme "^2.8.2"
+    flow-remove-types "^1.2.1"
+    glob-fs "^0.1.6"
+    lodash "^4.17.4"
+    mocha "^3.4.1"
+    react "^15.5.4"
+    react-addons-test-utils "^15.5.1"
+    react-dom "^15.5.4"
+    saul "^0.0.1-alpha"
 
 semver@^5.3.0:
   version "5.3.0"
