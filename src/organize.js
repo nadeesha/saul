@@ -8,7 +8,9 @@ const getTestableFunction = (filepath: string, funcName: string): Function => {
   return module[funcName];
 };
 
-const parseArgs = (argsString: string): Array<any> => eval(`[${argsString}]`);
+// @t "parses correctly" parseArgs(0) equals [0]
+export const parseArgs = (argsString: string): Array<any> =>
+  eval(`[${argsString}]`);
 
 const getEngineModule = engineName => {
   try {

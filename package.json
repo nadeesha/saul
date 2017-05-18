@@ -1,6 +1,6 @@
 {
   "name": "saul",
-  "version": "0.0.5-alpha",
+  "version": "0.0.6-alpha",
   "description": "An extensible dynamic unit test generator.",
   "main": "lib/index.js",
   "scripts": {
@@ -26,7 +26,7 @@
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
-    "saul": "^0.0.4-alpha"
+    "saul": "^0.0.5-alpha"
   },
   "bin": {
     "saul": "./lib/index.js"
