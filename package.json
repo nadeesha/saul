@@ -1,15 +1,14 @@
 {
   "name": "saul",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "An extensible dynamic unit test generator.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha node_modules/.bin/saul lib/*.test.js",
     "start": "node ./lib/index.js",
     "build": "babel src --out-dir lib",
     "watch": "babel --watch src --out-dir lib",
-    "prepublish": "yarn run build",
-    "test-all": "nyc mocha node_modules/.bin/saul lib/*.test.js"
+    "prepublish": "yarn run build"
   },
   "author": "Nadeesha Cabral <nadeesha.cabral@gmail.com>",
   "license": "MIT",
@@ -26,7 +25,7 @@
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
-    "saul": "^0.0.10-alpha",
+    "saul": "^0.0.10",
     "sinon": "^2.2.0"
   },
   "bin": {

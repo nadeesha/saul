@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { ExecutableParams } from './types';
 import { suite, test } from './testcase';
 
+/* istanbul ignore next */
 export const groupTestsByFuncName = (
   tests: ExecutableParams
 ): { [id: string]: ExecutableParams } =>
@@ -36,6 +37,7 @@ export const executeTestGroup = (
   testSuite(funcName, () => _.each(executableParams, executeTest));
 };
 
+/* istanbul ignore next */
 const execute = (executableParams: ExecutableParams) =>
   _(executableParams)
     .thru(groupTestsByFuncName)

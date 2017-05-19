@@ -43,6 +43,7 @@ const composeParams = (fileContent: string): Array<TestParams> => {
   return paramsArray;
 };
 
+/* istanbul ignore next */
 const parse = (filepath: string): Array<TestParams> => {
   return _(filepath).thru(getFileContent).thru(composeParams).value();
 };
