@@ -4,8 +4,11 @@ import fs from 'fs';
 
 import { TestParams } from './types';
 
-const getFileContent = (filepath: string): string =>
-  fs.readFileSync(filepath, 'utf-8');
+// @t "reads file" getFileContent('fakeFilePath', 'spyFoo') calls-spy-with fakeFilePath
+export const getFileContent = (
+  filepath: string,
+  readFile: typeof fs.readFileSync = fs.readFileSync
+): string => readFile(filepath, 'utf-8');
 
 const composeArgs = (match: string[]): TestParams => {
   const [
@@ -26,6 +29,7 @@ const composeArgs = (match: string[]): TestParams => {
   };
 };
 
+/* istanbul ignore next */
 const composeParams = (fileContent: string): Array<TestParams> => {
   const testLine: RegExp = /\/\/\s@t(?:\s|.)+?(".+?"){0,1}(?:\s|.)+?((?:\w)+)\((.*)\)(?:\s|.)+?((?:\w|\d|-)+)(?:\s|.!\w)+(.*)/g;
 

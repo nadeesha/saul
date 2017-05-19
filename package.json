@@ -9,7 +9,7 @@
     "build": "babel src --out-dir lib",
     "watch": "babel --watch src --out-dir lib",
     "prepublish": "yarn run build",
-    "saul": "mocha node_modules/.bin/saul"
+    "test-all": "nyc mocha node_modules/.bin/saul lib/*.test.js"
   },
   "author": "Nadeesha Cabral <nadeesha.cabral@gmail.com>",
   "license": "MIT",
@@ -26,17 +26,24 @@
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
-    "saul": "^0.0.9-alpha"
+    "saul": "^0.0.10-alpha",
+    "sinon": "^2.2.0"
   },
   "bin": {
     "saul": "./lib/index.js"
   },
   "devDependencies": {
     "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.46.0"
+    "flow-bin": "^0.46.0",
+    "nyc": "^10.3.2"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ncthis/saul"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ]
   }
 }

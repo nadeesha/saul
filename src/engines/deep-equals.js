@@ -5,10 +5,12 @@ export default (
   testDescription: string,
   func: Function,
   argsArray: Array<any>,
-  expected: string
+  expected: string,
+  test: (desc: string, fn: () => void) => void
 ) => {
-  mocha.it(testDescription, () => {
+  test(testDescription, () => {
     const actual = func.apply(null, argsArray);
-    expect(actual).to.eql(eval(`${expected}`));
+    // must eval ( var ) it because eval({foo: 'bar'}) goes bar
+    expect(actual).to.eql(eval(`var trouble = ${expected}; trouble`));
   });
 };

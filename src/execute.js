@@ -1,30 +1,49 @@
 import _ from 'lodash';
 import { ExecutableParams } from './types';
-import mocha from 'mocha';
+import { suite, test } from './testcase';
 
-const groupTestsByFuncName = (
+export const groupTestsByFuncName = (
   tests: ExecutableParams
-): { [id: string]: ExecutableParams } => {
-  return _.groupBy(tests, test => test.function.name);
-};
+): { [id: string]: ExecutableParams } =>
+  _.groupBy(tests, test => {
+    if (!test.function) {
+      throw new Error(
+        `Test ${test.testDescription} does not hava a testable function. Did you export it?`
+      );
+    }
 
-const executeTest = (executableParams: ExecutableParams) =>
+    return test.function.name;
+  });
+
+// @t "executes with engine" executeTest({engine: () => 'result'}) deep-equals 'result'
+// @t "throws on invalid" executeTest({engine: null}) throws Error
+export const executeTest = (executableParams: ExecutableParams) =>
   executableParams.engine(
     executableParams.testDescription,
     executableParams.function,
     executableParams.args,
-    executableParams.output
+    executableParams.output,
+    test
   );
 
-const executeTestGroup = (
+// @t "passed suite context is called" executeTestGroup(null, null, "spyFoo") calls-spy spyFoo
+// @t "passed suite context is called with funcName" executeTestGroup(null, 'bikeLane', "spyFoo") calls-spy-with bikeLane
+export const executeTestGroup = (
   executableParams: ExecutableParams[],
-  funcName: string
-) => mocha.describe(funcName, () => _.each(executableParams, executeTest));
+  funcName: string,
+  testSuite: typeof suite = suite
+) => {
+  testSuite(funcName, () => _.each(executableParams, executeTest));
+};
 
 const execute = (executableParams: ExecutableParams) =>
   _(executableParams)
     .thru(groupTestsByFuncName)
-    .thru(groupedTests => _.forOwn(groupedTests, executeTestGroup))
+    .thru(groupedTests =>
+      _.forOwn(groupedTests, (executableParams, funcName) =>
+        executeTestGroup(executableParams, funcName)
+      )
+    )
     .commit();
 
 export default execute;

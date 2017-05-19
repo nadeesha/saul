@@ -14,8 +14,9 @@ export const getTestableFunction = (
 };
 
 // @t "parses correctly" parseArgs(0) deep-equals [0]
-export const parseArgs = (argsString: string): Array<any> =>
-  eval(`[${argsString}]`);
+export const parseArgs = (argsString: string): Array<any> => {
+  return eval(`[${argsString}]`);
+};
 
 // @t "gets engine" getEngineModule('foo', () => ({ default: 'bar' })) equals 'bar'
 // @t "throws on bad engine" getEngineModule('bad', () => null) throws 'Engine: bad is not valid'

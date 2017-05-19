@@ -14,7 +14,8 @@ export type ExecutableParams = {
     testDescription: string,
     component: Function,
     argsArray: Array<any>,
-    expected: string
+    expected: string,
+    test: (desc: string, fn: () => void) => void
   ) => void,
   output: string
 };
