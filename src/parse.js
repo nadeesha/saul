@@ -10,7 +10,8 @@ export const getFileContent = (
   readFile: typeof fs.readFileSync = fs.readFileSync
 ): string => readFile(filepath, 'utf-8');
 
-const composeArgs = (match: string[]): TestParams => {
+// @t "not foo" composeArgs(['1', '2']) is-not foo
+export const composeArgs = (match: string[]): TestParams => {
   const [
     fullMatch,
     testDescription,

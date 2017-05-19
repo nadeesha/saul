@@ -1,0 +1,7 @@
+{
+    "fileGlob": "**/*.js",
+    "mocks": {
+        "require": "./mocks/require.js"
+    },
+    "customEnginesDir": "./src/custom-saul-engines"
+}
