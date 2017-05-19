@@ -3,7 +3,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { expand } from '@emmetio/expand-abbreviation';
 import _ from 'lodash';
-import mocha from 'mocha';
+import unescape from 'unescape';
 
 export default (
   testDescription: string,
@@ -17,6 +17,8 @@ export default (
     const actual = wrapper.html();
     // emmet formats and indents expansion.
     // therefore, remove the \s using regex
-    expect(actual).to.equal(expand(expected).replace(/>(\s)*</g, '><'));
+    expect(unescape(actual).replace('/>', '>')).to.equal(
+      expand(expected).replace(/>(\s)*</g, '><')
+    );
   });
 };

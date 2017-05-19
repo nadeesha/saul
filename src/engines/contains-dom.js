@@ -3,6 +3,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { expand } from '@emmetio/expand-abbreviation';
 import mocha from 'mocha';
+import unescape from 'unescape';
 
 export default (
   testDescription: string,
@@ -14,6 +15,6 @@ export default (
   test(testDescription, () => {
     const wrapper = shallow(React.createElement(component, argsArray[0]));
     const actual = wrapper.html();
-    expect(actual).to.contain(expand(expected));
+    expect(unescape(actual).replace('/>', '>')).to.contain(expand(expected));
   });
 };
