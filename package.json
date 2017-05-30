@@ -1,6 +1,6 @@
 {
   "name": "saul",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "An extensible dynamic unit test generator.",
   "main": "lib/index.js",
   "scripts": {
@@ -27,13 +27,13 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "flow-remove-types": "^1.2.1",
-    "glob-fs": "^0.1.6",
+    "glob": "^7.1.2",
     "lodash": "^4.17.4",
     "mocha": "^3.4.1",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
-    "saul": "^0.0.10",
+    "saul": "0.0.14",
     "sinon": "^2.2.0",
     "unescape": "^0.2.0"
   },
