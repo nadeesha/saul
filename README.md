@@ -41,27 +41,9 @@ function shouldCallSaul(threatLevel) {
 }
 ```
 
-# How does it do it?
-
-According to the `saulconfig.json`, it grabs all the testable files from your project - looks for the comments that follow that pattern above, and parses them. So in the case of
-
-```js
-// @t "should call saul when the threat is imminent"        shouldCallSaul('imminent') equals true
-```
-
-1. "should call saul when the threat is imminent" is your test description.
-2. `shouldCallSaul` is the testable function
-3. `['imminent']` are the arguments.
-4. `equals` is the engine.
-5. `true` is the expected output.
-
-Then the engine `equals` - referring to the engine definition in a `engines/engine.js` file somewhere will generate the test for you. It will just run the testable function with the arguments inside the engine - and do the comparison against the expected output.
-
-When it generates a test, it does not generate a "file". Rather, it will generate the test on the fly, in-memory, and feed it to your test runner.
-
 # What more can it do?
 
-The engine, is responsible for generating the tests. So, as long as you build a custom engine - it can pretty much test anything. The default engines can do a few cool things out of the box. (check the `src/engines/` directory). You can always write your own engines and put them in your `customEnginesDir` defined in `saulconfig.json`.
+The engine, is responsible for generating the tests. So, as long as you build a custom engine - it can pretty much test anything. The default engines can do a few cool things out of the box. (check the `src/engines/` directory). You can always write your own engines and put them in your `customEnginesDir` defined in `.saulrc`.
 
 ## Checking a `throw`
 
@@ -95,7 +77,7 @@ const Pill = ({isNew}) => (
 ## How can I use it?
 
 1. Install Saul as a dev dependency: `yarn add saul -d`
-2. Create a `saulconfig.json` in the root.
+2. Create a `.saulrc` in the root.
 
 example:
 ```js

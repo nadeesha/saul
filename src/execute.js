@@ -1,6 +1,6 @@
-import _ from 'lodash';
-import { ExecutableParams } from './types';
-import { suite, test } from './testcase';
+import _ from "lodash";
+import { ExecutableParams } from "./types";
+import { suite, test } from "./testcase";
 
 /* istanbul ignore next */
 export const groupTestsByFuncName = (
@@ -27,7 +27,7 @@ export const executeTest = (executableParams: ExecutableParams) =>
     test
   );
 
-// @t "passed suite context is called" executeTestGroup(null, null, "spyFoo") calls-spy spyFoo
+// @t "passed suite context is called" executeTestGroup(null, null, "spyFoo") calls-spy true
 // @t "passed suite context is called with funcName" executeTestGroup(null, 'bikeLane', "spyFoo") calls-spy-with bikeLane
 export const executeTestGroup = (
   executableParams: ExecutableParams[],

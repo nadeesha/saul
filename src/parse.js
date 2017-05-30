@@ -46,7 +46,11 @@ const composeParams = (fileContent: string): Array<TestParams> => {
 
 /* istanbul ignore next */
 const parse = (filepath: string): Array<TestParams> => {
-  return _(filepath).thru(getFileContent).thru(composeParams).value();
+  try {
+    return _(filepath).thru(getFileContent).thru(composeParams).value();
+  } catch (e) {
+    throw new Error('Error parsing your test files');
+  }
 };
 
 export default parse;

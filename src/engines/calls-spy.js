@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import mocha from 'mocha';
 import sinon from 'sinon';
 
 export default (
@@ -18,6 +17,6 @@ export default (
 
     func.apply(null, argsWithSpy);
 
-    expect(injectableSpy.called).to.equal(true);
+    expect(injectableSpy.called).to.equal(expected === 'true');
   });
 };

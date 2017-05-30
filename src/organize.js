@@ -19,17 +19,21 @@ export const getTestableFunction = (
 // @t "parses correctly" parseArgs("0") deep-equals [0]
 // @t "parses multiple values" parseArgs("12, 15") deep-equals [12, 15]
 export const parseArgs = (argsString: string): Array<any> => {
-  return eval(`[${argsString}]`);
+  try {
+    return eval(`[${argsString}]`);
+  } catch (e) {
+    throw new Error(`Possible syntax error in your args: ${argsString}`);
+  }
 };
 
 export const getEngineModule = (engineName, requireFile = require) => {
-  const userModule = path.join(
-    process.cwd(),
-    getConfig().customEnginesDir,
-    `${engineName}.js`
-  );
-
   try {
+    const userModule = path.join(
+      process.cwd(),
+      getConfig().customEnginesDir,
+      `${engineName}.js`
+    );
+
     if (fs.statSync(userModule) && requireFile(userModule).default) {
       return requireFile(userModule).default;
     }

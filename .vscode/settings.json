@@ -4,5 +4,7 @@
         "**/node_modules": true,
         "**/bower_components": true,
         "**/lib": true
-    }
+    },
+    "javascript.validate.enable": false,
+    "editor.formatOnSave": true
 }
