@@ -125,7 +125,7 @@ Just give a read through this repo. Saul is tested with Saul! :rocket:
 
 # Contributions
 
-Please! Here are som TODOs that needs being done.
+Please! Here are som TODOs that need being done.
 
 - [ ] More engines! (If you would like to contribute an engine, please take a look at the engine files at `src/engines`)
 - [ ] Documentation on writing engines.
