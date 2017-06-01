@@ -45,33 +45,58 @@ function shouldCallSaul(threatLevel) {
 
 # What more can it do?
 
-## Checking a `throw`
-
+### calls-spy
+Checks whether a test spy is called 
 ```js
-// @t "throws on null engine" executeTest({engine: null}) throws Error
-export const executeTest = (executableParams: ExecutableParams) =>
-  executableParams.engine(1);
+// @t "reads file" getFileContent('fakeFilePath', 'spyFoo') calls-spy true
 ```
 
-## Checking whether a test spy is called
-
+### calls-spy-with
+Checks whether a test spy is called with the expected value
 ```js
 // @t "reads file" getFileContent('fakeFilePath', 'spyFoo') calls-spy-with fakeFilePath
-export const getFileContent = (
-  filepath: string,
-  readFile: typeof fs.readFileSync = fs.readFileSync
-): string => readFile(filepath, 'utf-8');
 ```
 
-## Comparing the DOM for React-based tests (using emmet expressions)
-
+### contains-dom
+Checks whether the given emmet expression exists within the generated DOM
 ```js
-// @t "has new pill" Thumbnail({isNew: true}) contains-dom div#foo{New}
-const Pill = ({isNew}) => (
-    <div>
-        {isNew && <div className={styles.pill} id={'foo'}>New</div>}
-    </div>
-)
+// @t "has new div" List({items: [1, 2]}) contains-dom li.item{1}
+```
+
+### contains
+Checks whether the output contains the expected value
+```js
+// @t "can concat" concatanate('string1', 'something els') contains 'string1'
+```
+
+### deep-equal
+Checks whether the expected value is deep equal to actual value
+```js
+// @t "assigns correctly" myAssign({ foo: 1 }, { foo: 2}) deep-equals { foo: 2 }
+```
+
+### equals
+Checks whether the expected value is equal to the actual value
+```js
+// @t "can sum" sum(1, 2) equals 3
+```
+
+### is-not
+Checks whether the expected value is not equal to the actual value. (Opposite of `equals`)
+```js
+// @t "can sum" sum(1, 2) is-not 4
+```
+
+### matches-dom
+Checks whether the given emmet expression matches the generated DOM
+```js
+// @t "has new div" FooSpan({children: 'bar'}) matches-dom span#foo{bar}
+```
+
+### throws
+Checks whether the invokation would throw.
+```js
+// @t "throws on null engine" executeTest({engine: null}) throws Error
 ```
 
 And more! See: [extending saul](#extending).
