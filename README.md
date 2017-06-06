@@ -6,7 +6,7 @@ Dynamic unit test generation for pure javascript functions.
 
 # What is it?
 
-Saul like to generate tests for your pure functions when you don't feel like writing them yourself.
+Saul likes to generate tests for your pure functions when you don't feel like writing them yourself.
 
 Suppose that you have a simple function like this.
 
