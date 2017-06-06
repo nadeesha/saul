@@ -132,11 +132,24 @@ example:
 
 3. Invoke saul from your test. 
 
-Example: If you have some mocha tests already, your `npm test` would look like: `mocha src/**/.js`. Simple add Saul's bin (`node_modules/.bin/saul`) right at the end:
+### Mocha/Jasmine
+
+If you have some mocha tests already, your `npm test` would look like: `mocha src/**/.js`. Simple add Saul's bin (`node_modules/.bin/saul`) right at the end:
 
 ```sh
 mocha lib/*.test.js" node_modules/.bin/saul
 ```
+### Jest
+
+Since jest requires a regex pattern for test files, you will have to create a file with a single file with a `require`, that will be matched by your jest `regexPattern`.
+
+Example:
+```js
+// saul-runner.test.js
+require('saul');
+```
+
+NOTE: If you have your tests file inside the `__tests__` directory, make sure to put this file there.
 
 ## Usage with Babel
 
