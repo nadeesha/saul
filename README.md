@@ -119,8 +119,9 @@ The default engines can do a few cool things out of the box. (check the `src/eng
 
 ## Installation
 
-1. Install Saul as a dev dependency: `yarn add saul -d`
-2. Create a `.saulrc` in the root.
+### 1. Install Saul as a dev dependency: `yarn add --dev saul`
+
+### 2. Create a `.saulrc` in the root.
 
 example:
 ```js
@@ -130,16 +131,16 @@ example:
 }
 ```
 
-3. Invoke saul from your test. 
+### 3. Invoke saul from your test. 
 
-### Mocha/Jasmine
+#### Mocha/Jasmine
 
 If you have some mocha tests already, your `npm test` would look like: `mocha src/**/.js`. Simple add Saul's bin (`node_modules/.bin/saul`) right at the end:
 
 ```sh
 mocha lib/*.test.js" node_modules/.bin/saul
 ```
-### Jest
+#### Jest
 
 Since jest requires a regex pattern for test files, you will have to create a file with a single file with a `require`, that will be matched by your jest `regexPattern`.
 
