@@ -3432,6 +3432,21 @@ saul@0.0.14:
     sinon "^2.2.0"
     unescape "^0.2.0"
 
+saul@0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/saul/-/saul-0.0.16.tgz#b2065273b255d93cc0b52667a391dd643c14c442"
+  dependencies:
+    "@emmetio/expand-abbreviation" "^0.5.6"
+    chai "^3.5.0"
+    enzyme "^2.8.2"
+    flow-remove-types "^1.2.1"
+    glob "^7.1.2"
+    lodash "^4.17.4"
+    react "^15.5.4"
+    saul "0.0.14"
+    sinon "^2.2.0"
+    unescape "^0.2.0"
+
 saul@^0.0.10, saul@^0.0.10-alpha:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/saul/-/saul-0.0.10.tgz#953847cf3ccf582a13a79d51ba8466c805e32d31"

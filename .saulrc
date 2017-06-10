@@ -1,4 +1,4 @@
 {
-    "fileGlob": "lib/**/*.js",
+    "fileGlob": "src/**/*.js",
     "customEnginesDir": "./src/custom-saul-engines"
 }
