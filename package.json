@@ -1,6 +1,6 @@
 {
   "name": "saul",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "An extensible dynamic unit test generator.",
   "main": "lib/index.js",
   "scripts": {

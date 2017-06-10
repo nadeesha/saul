@@ -10,10 +10,13 @@ machine:
 
 ## Customize dependencies
 dependencies:
+  pre:
+    - brew install yarn
+    
   override:
-    - npm install
+    - yarn install
 
 ## Customize test commands
 test:
   override:
-    - npm test
+    - yarn test
