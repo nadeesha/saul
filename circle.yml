@@ -11,9 +11,9 @@ machine:
 ## Customize dependencies
 dependencies:
   override:
-    - npm install
+    - yarn
 
 ## Customize test commands
 test:
   override:
-    - npm test
+    - yarn test
