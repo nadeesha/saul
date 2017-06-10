@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import mocha from 'mocha';
 
 export default (
   testDescription: string,

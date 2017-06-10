@@ -11,9 +11,7 @@ export default (
   test(testDescription, () => {
     const injectableSpy = sinon.spy();
 
-    const argsWithSpy = argsArray.map(
-      arg => (arg && arg.indexOf('spy') === 0 ? injectableSpy : arg)
-    );
+    const argsWithSpy = argsArray.map(arg => (arg && arg.indexOf('spy') === 0 ? injectableSpy : arg));
 
     func.apply(null, argsWithSpy);
 
