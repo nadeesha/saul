@@ -2,7 +2,6 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { expect } from 'chai';
 import { expand } from '@emmetio/expand-abbreviation';
-import mocha from 'mocha';
 import unescape from 'unescape';
 
 export default (

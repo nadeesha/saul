@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 // @t "has thumbnailImage" Thumbnail({thumbnailImage: 'fake'}) contains-dom img[src='url("fake")']
 // @t "has pill" Thumbnail({isNew: true}) contains-dom div#foo{New}
@@ -10,7 +10,7 @@ export const Thumbnail = ({
   brandingLogoUrl,
   brandingColor,
   styles = {},
-  formatAuctionDate = function noop() {},
+  formatAuctionDate = function noop () {},
   Branding = 'div',
   brandingStyles = {}
 }) => (
@@ -21,11 +21,7 @@ export const Thumbnail = ({
         backgroundImage: `url("${thumbnailImage}")`
       }}
     >
-      <img
-        src={`url("${thumbnailImage}")`}
-        alt=""
-        className={styles.thumbnailImage}
-      />
+      <img src={`url("${thumbnailImage}")`} alt="" className={styles.thumbnailImage} />
       {isNew && <div className={styles.pill} id={'foo'}>New</div>}
       <div className={styles.caption}>
         Auction {formatAuctionDate(auctionDate)}

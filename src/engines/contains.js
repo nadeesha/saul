@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import mocha from 'mocha';
 
 export default (
   testDescription: string,
@@ -10,6 +9,6 @@ export default (
 ) => {
   test(testDescription, () => {
     const actual = func.apply(null, argsArray);
-    expect(actual).to.contain(eval(`${expected}`));
+    expect(actual).to.contain(eval(`${expected}`)); // eslint-disable-line no-eval
   });
 };

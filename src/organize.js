@@ -2,16 +2,11 @@ import fs from 'fs';
 import { TestParams, ExecutableParams } from './types';
 import { getConfig } from './config';
 import path from 'path';
-import _ from 'lodash';
 
 require('babel-register');
 
 // @t "gets correct function" getTestableFunction('foo', 'bar', () => ({'bar': 'baz'})) equals 'baz'
-export const getTestableFunction = (
-  filepath: string,
-  funcName: string,
-  requireFile = require
-): Function => {
+export const getTestableFunction = (filepath: string, funcName: string, requireFile = require): Function => {
   const module = requireFile(filepath);
   return module[funcName];
 };
@@ -20,7 +15,7 @@ export const getTestableFunction = (
 // @t "parses multiple values" parseArgs("12, 15") deep-equals [12, 15]
 export const parseArgs = (argsString: string): Array<any> => {
   try {
-    return eval(`[${argsString}]`);
+    return eval(`[${argsString}]`); // eslint-disable-line no-eval
   } catch (e) {
     throw new Error(`Possible syntax error in your args: ${argsString}`);
   }
@@ -28,11 +23,7 @@ export const parseArgs = (argsString: string): Array<any> => {
 
 export const getEngineModule = (engineName, requireFile = require) => {
   try {
-    const userModule = path.join(
-      process.cwd(),
-      getConfig().customEnginesDir,
-      `${engineName}.js`
-    );
+    const userModule = path.join(process.cwd(), getConfig().customEnginesDir, `${engineName}.js`);
 
     if (fs.statSync(userModule) && requireFile(userModule).default) {
       return requireFile(userModule).default;
@@ -46,10 +37,7 @@ export const getEngineModule = (engineName, requireFile = require) => {
   }
 };
 
-export default (
-  filepath: string,
-  testParams: TestParams
-): ExecutableParams => ({
+export default (filepath: string, testParams: TestParams): ExecutableParams => ({
   function: getTestableFunction(filepath, testParams.funcName),
   testDescription: testParams.testDescription,
   args: parseArgs(testParams.args),

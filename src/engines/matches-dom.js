@@ -2,7 +2,6 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { expect } from 'chai';
 import { expand } from '@emmetio/expand-abbreviation';
-import _ from 'lodash';
 import unescape from 'unescape';
 
 export default (
@@ -17,8 +16,6 @@ export default (
     const actual = wrapper.html();
     // emmet formats and indents expansion.
     // therefore, remove the \s using regex
-    expect(unescape(actual).replace('/>', '>')).to.equal(
-      expand(expected).replace(/>(\s)*</g, '><')
-    );
+    expect(unescape(actual).replace('/>', '>')).to.equal(expand(expected).replace(/>(\s)*</g, '><'));
   });
 };
