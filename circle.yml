@@ -1,0 +1,19 @@
+## Customize the test machine
+machine:
+
+  timezone:
+    Australia/Melbourne # Set the timezone
+
+  # Add some environment variables
+  environment:
+    CIRCLE_ENV: test
+
+## Customize dependencies
+dependencies:
+  override:
+    - npm install
+
+## Customize test commands
+test:
+  override:
+    - npm test
