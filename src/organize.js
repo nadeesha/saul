@@ -2,13 +2,20 @@ import fs from 'fs';
 import { TestParams, ExecutableParams } from './types';
 import { getConfig } from './config';
 import path from 'path';
+import _ from 'lodash';
 
 require('babel-register');
 
-// @t "gets correct function" getTestableFunction('foo', 'bar', () => ({'bar': 'baz'})) equals 'baz'
-export const getTestableFunction = (filepath: string, funcName: string, requireFile = require): Function => {
+// @t "with normal export"    getTestableFunction('foo', 'bar', () => ({'bar': 'baz'})) equals 'baz'
+// @t "with nested export"    getTestableFunction('foo', 'bar.good', () => ({'bar': { 'good': 'sogood' }})) equals 'sogood'
+export const getTestableFunction = (
+  filepath: string,
+  funcName: string,
+  requireFile = require,
+  get = _.get
+): Function => {
   const module = requireFile(filepath);
-  return module[funcName];
+  return get(module, funcName);
 };
 
 // @t "parses correctly" parseArgs("0") deep-equals [0]

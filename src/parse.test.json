@@ -1,0 +1,62 @@
+[
+    {
+        "testDefinition": "// @t \"not foo\" composeArgs(['1', '2']) is-not foo",
+        "params": {
+            "testDescription": "\"not foo\"",
+            "engineName": "is-not",
+            "funcName": "composeArgs",
+            "args": "['1', '2']",
+            "output": "foo"
+        }
+    },
+    {
+        "testDefinition": "// @t \"not foo\" composeArgs(1) is-not foo",
+        "params": {
+            "testDescription": "\"not foo\"",
+            "engineName": "is-not",
+            "funcName": "composeArgs",
+            "args": "1",
+            "output": "foo"
+        }
+    },
+    {
+        "testDefinition": "// @t \"not foo\" composeArgs(1) is foo",
+        "params": {
+            "testDescription": "\"not foo\"",
+            "engineName": "is",
+            "funcName": "composeArgs",
+            "args": "1",
+            "output": "foo"
+        }
+    },
+    {
+        "testDefinition": "// @t \"not foo\" composeArgs(['1', '2']) is foo",
+        "params": {
+            "testDescription": "\"not foo\"",
+            "engineName": "is",
+            "funcName": "composeArgs",
+            "args": "['1', '2']",
+            "output": "foo"
+        }
+    },
+    {
+        "testDefinition": "// @t \"not foo\" file.composeArgs(1) is-not foo",
+        "params": {
+            "testDescription": "\"not foo\"",
+            "engineName": "is-not",
+            "funcName": "file.composeArgs",
+            "args": "1",
+            "output": "foo"
+        }
+    },
+    {
+        "testDefinition": "// @t \"not foo\" file.compose.deep.Args(1) is-not foo",
+        "params": {
+            "testDescription": "\"not foo\"",
+            "engineName": "is-not",
+            "funcName": "file.compose.deep.Args",
+            "args": "1",
+            "output": "foo"
+        }
+    }
+]

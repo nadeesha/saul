@@ -20,9 +20,8 @@ export const composeArgs = (match: string[]): TestParams => {
   };
 };
 
-/* istanbul ignore next */
-const composeParams = (fileContent: string): Array<TestParams> => {
-  const testLine: RegExp = /(?:\/\/\s@t\s)(".*")(?:[^\w])+(\w+)\((.*)(?:\)[^\w])+((?:\w|-)+)(?:[\s])+(.+)/g;
+export const composeParams = (fileContent: string): Array<TestParams> => {
+  const testLine: RegExp = /(?:\/\/\s@t\s)(".*")(?:[^\w])+([\w|\.]+)\((.*)(?:\)[^\w])+((?:\w|-)+)(?:[\s])+(.+)/g;
 
   let match;
   let paramsArray = [];
