@@ -10,11 +10,11 @@ let config: Config;
 
 const configFileName = '.saulrc';
 
-// @t "gets existing config" getConfig({foo: "bar"}) deep-equals {foo: 'bar'}
+// @t "gets existing config" getConfig({foo: "bar"}) ~deep-equals {foo: 'bar'}
 // @t "must read and get config"
-//     getConfig(null, () => '{"good": "config"}', 'fakePath') deep-equals {good: 'config'}
+//     getConfig(null, () => '{"good": "config"}', 'fakePath') ~deep-equals {good: 'config'}
 // @t "must return default config on bad config"
-//     getConfig(null, null, 'fakePath') deep-equals {fileGlob: '**/*.js'}
+//     getConfig(null, null, 'fakePath') ~deep-equals {fileGlob: '**/*.js'}
 export const getConfig = (
   existingConfig: Config = config,
   readFile: typeof fs.readFileSync = fs.readFileSync,

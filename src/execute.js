@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { ExecutableParams } from './types';
 import { suite, test } from './testcase';
+import { getSpy } from './spies';
 
 /* istanbul ignore next */
 export const groupTestsByFuncName = (tests: ExecutableParams): { [id: string]: ExecutableParams } =>
@@ -12,19 +13,21 @@ export const groupTestsByFuncName = (tests: ExecutableParams): { [id: string]: E
     return test.function.name;
   });
 
-// @t "executes with engine" executeTest({engine: () => 'result'}) deep-equals 'result'
-// @t "throws on invalid" executeTest({engine: null}) throws Error
+// @t "executes with engine" executeTest({engine: () => 'result'}) ~deep-equals 'result'
+// @t "throws on invalid" executeTest({engine: null}) ~throws Error
 export const executeTest = (executableParams: ExecutableParams) =>
   executableParams.engine(
     executableParams.testDescription,
     executableParams.function,
     executableParams.args,
     executableParams.output,
-    test
+    test,
+    {
+      getSpy
+    }
   );
 
-// @t "passed suite context is called" executeTestGroup(null, null, "spyFoo") calls-spy true
-// @t "passed suite context is called with funcName" executeTestGroup(null, 'bikeLane', "spyFoo") calls-spy-with bikeLane
+// @t "passed suite context is called" executeTestGroup(null, null, spy('test')) ~expects spy('test').calledOnce
 export const executeTestGroup = (
   executableParams: ExecutableParams[],
   funcName: string,

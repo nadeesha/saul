@@ -4,7 +4,8 @@
   "description": "An extensible dynamic unit test generator.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node_modules/.bin/eslint src/**/*.js && nyc mocha --compilers js:babel-register src/**/*.test.js node_modules/.bin/saul",
+    "unit-tests": "nyc mocha --compilers js:babel-register src/**/*.test.js node_modules/.bin/saul",
+    "test": "node_modules/.bin/eslint src/**/*.js && yarn unit-tests",
     "start": "node ./lib/index.js",
     "build": "babel src --out-dir lib",
     "watch": "babel --watch src --out-dir lib",
