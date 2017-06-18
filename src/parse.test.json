@@ -1,6 +1,6 @@
 [
     {
-        "testDefinition": "// @t \"not foo\" composeArgs(['1', '2']) is-not foo",
+        "testDefinition": "// @t \"not foo\" composeArgs(['1', '2']) ~is-not foo",
         "params": {
             "testDescription": "\"not foo\"",
             "engineName": "is-not",
@@ -10,7 +10,7 @@
         }
     },
     {
-        "testDefinition": "// @t \"not foo\" composeArgs(1) is-not foo",
+        "testDefinition": "// @t \"not foo\" composeArgs(1) ~is-not foo",
         "params": {
             "testDescription": "\"not foo\"",
             "engineName": "is-not",
@@ -20,7 +20,7 @@
         }
     },
     {
-        "testDefinition": "// @t \"not foo\" composeArgs(1) is foo",
+        "testDefinition": "// @t \"not foo\" composeArgs(1) ~is foo",
         "params": {
             "testDescription": "\"not foo\"",
             "engineName": "is",
@@ -30,7 +30,7 @@
         }
     },
     {
-        "testDefinition": "// @t \"not foo\" composeArgs(['1', '2']) is foo",
+        "testDefinition": "// @t \"not foo\" composeArgs(['1', '2']) ~is foo",
         "params": {
             "testDescription": "\"not foo\"",
             "engineName": "is",
@@ -40,7 +40,7 @@
         }
     },
     {
-        "testDefinition": "// @t \"not foo\" file.composeArgs(1) is-not foo",
+        "testDefinition": "// @t \"not foo\" file.composeArgs(1) ~is-not foo",
         "params": {
             "testDescription": "\"not foo\"",
             "engineName": "is-not",
@@ -50,7 +50,7 @@
         }
     },
     {
-        "testDefinition": "// @t \"not foo\" file.compose.deep.Args(1) is-not foo",
+        "testDefinition": "// @t \"not foo\" file.compose.deep.Args(1) ~is-not foo",
         "params": {
             "testDescription": "\"not foo\"",
             "engineName": "is-not",
