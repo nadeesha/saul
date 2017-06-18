@@ -1,24 +1,18 @@
+import { shallow } from 'enzyme';
+import React from 'react';
 import { expect } from 'chai';
 import assert from 'assert';
 
-// @t "woo" testEvalSpy(spy('bar')) ~expects expect(spy('bar').calledOnce).to.equal(true)
-// @t "woo" testEvalSpy(spy('baz'), {leet: 1337}) ~expects expect(spy('baz').args[0]).to.eql(['foo', {leet: 1337}])
-// @t "woo" testEvalSpy(spy('far')) ~expects spy('far').calledOnce
-export function testEvalSpy (fn, obj) {
-  fn('foo', obj);
-}
-
-/* istanbul ignore next */
 export default (
   testDescription: string,
-  func: Function,
+  component: Function,
   argsArray: Array<any>,
   expected: string,
   test: (desc: string, fn: () => void) => void,
   { getSpy }
 ) => {
   test(testDescription, () => {
-    func.apply(null, argsArray);
+    const wrapper = shallow(React.createElement(component, argsArray[0]));
     const spy = getSpy;
 
     (function evaluate () {
@@ -27,6 +21,7 @@ export default (
         `
         const expect = this.expect;
         const assert = this.assert;
+        const wrapper = this.wrapper;
         const spy = this.spy;
 
         ${expected.indexOf('expect(') > 0 ? expected : `assert(${expected})`}
@@ -35,7 +30,8 @@ export default (
     }.call({
       expect,
       spy,
-      assert
+      assert,
+      wrapper
     }));
   });
 };
