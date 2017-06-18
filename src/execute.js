@@ -27,7 +27,7 @@ export const executeTest = (executableParams: ExecutableParams) =>
     }
   );
 
-// @t "passed suite context is called" executeTestGroup(null, null, spy('test')) ~expects spy('test').calledOnce
+// @t "passed suite context is called" executeTestGroup(null, null, spy('test')) ~expect-spy spy('test').calledOnce
 export const executeTestGroup = (
   executableParams: ExecutableParams[],
   funcName: string,

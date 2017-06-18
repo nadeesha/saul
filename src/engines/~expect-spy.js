@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import assert from 'assert';
 
-// @t "woo" testEvalSpy(spy('bar')) ~expects expect(spy('bar').calledOnce).to.equal(true)
-// @t "woo" testEvalSpy(spy('baz'), {leet: 1337}) ~expects expect(spy('baz').args[0]).to.eql(['foo', {leet: 1337}])
-// @t "woo" testEvalSpy(spy('far')) ~expects spy('far').calledOnce
+// @t "woo" testEvalSpy(spy('bar')) ~expect-spy expect(spy('bar').calledOnce).to.equal(true)
+// @t "woo" testEvalSpy(spy('baz'), {leet: 1337}) ~expect-spy expect(spy('baz').args[0]).to.eql(['foo', {leet: 1337}])
+// @t "woo" testEvalSpy(spy('far')) ~expect-spy spy('far').calledOnce
 export function testEvalSpy (fn, obj) {
   fn('foo', obj);
 }
