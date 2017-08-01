@@ -1,8 +1,8 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 
-// @t "has thumbnailImage" Thumbnail({thumbnailImage: 'fake'}) contains-dom img[src='url("fake")']
-// @t "has pill" Thumbnail({isNew: true}) contains-dom div#foo{New}
-// @t "has auction date" Thumbnail({formatAuctionDate: () => 'auczdate'}) contains-dom div{Auction auczdate}
+// @t "has thumbnailImage" Thumbnail({thumbnailImage: 'fake'}) ~expect-spy expect(JSON.stringify(result)).to.equal('foo')
+// - @t "has pill" Thumbnail({isNew: true}) ~~matches-snapshot
+// - @t "has auction date" Thumbnail({formatAuctionDate: () => 'auczdate'}) ~matches-snapshot
 export const Thumbnail = ({
   thumbnailImage,
   isNew,
@@ -13,7 +13,7 @@ export const Thumbnail = ({
   formatAuctionDate = function noop () {},
   Branding = 'div',
   brandingStyles = {}
-}) => (
+}) =>
   <div className={styles.thumbnailWrapper}>
     <div
       className={styles.thumbnail}
@@ -21,8 +21,15 @@ export const Thumbnail = ({
         backgroundImage: `url("${thumbnailImage}")`
       }}
     >
-      <img src={`url("${thumbnailImage}")`} alt="" className={styles.thumbnailImage} />
-      {isNew && <div className={styles.pill} id={'foo'}>New</div>}
+      <img
+        src={`url("${thumbnailImage}")`}
+        alt=""
+        className={styles.thumbnailImage}
+      />
+      {isNew &&
+        <div className={styles.pill} id={'foo'}>
+          New
+        </div>}
       <div className={styles.caption}>
         Auction {formatAuctionDate(auctionDate)}
       </div>
@@ -32,5 +39,4 @@ export const Thumbnail = ({
       className={brandingStyles.thumbnailBranding}
       brandingLogoUrl={brandingLogoUrl}
     />
-  </div>
-);
+  </div>;
