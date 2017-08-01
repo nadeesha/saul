@@ -33,7 +33,6 @@ function parseArgsFn (argsString: string) {
     `
     );
   } catch (e) {
-    console.log(e);
     throw new Error(`Possible syntax error in your args: ${argsString}`);
   }
 }
@@ -46,7 +45,11 @@ export const parseArgs = parseArgsFn.bind(getArgsContext());
 
 export const getEngineModule = (engineName, requireFile = require) => {
   try {
-    const userModule = path.join(process.cwd(), getConfig().customEnginesDir, `${engineName}.js`);
+    const userModule = path.join(
+      process.cwd(),
+      getConfig().customEnginesDir,
+      `${engineName}.js`
+    );
 
     if (fs.statSync(userModule) && requireFile(userModule).default) {
       return requireFile(userModule).default;
@@ -55,12 +58,15 @@ export const getEngineModule = (engineName, requireFile = require) => {
     try {
       return requireFile(`./engines/${engineName}.js`).default;
     } catch (e) {
-      return null;
+      throw e.message;
     }
   }
 };
 
-export default (filepath: string, testParams: TestParams): ExecutableParams => ({
+export default (
+  filepath: string,
+  testParams: TestParams
+): ExecutableParams => ({
   function: getTestableFunction(filepath, testParams.funcName),
   testDescription: testParams.testDescription,
   args: parseArgs(testParams.args),

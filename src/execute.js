@@ -4,10 +4,14 @@ import { suite, test } from './testcase';
 import { getSpy } from './spies';
 
 /* istanbul ignore next */
-export const groupTestsByFuncName = (tests: ExecutableParams): { [id: string]: ExecutableParams } =>
+export const groupTestsByFuncName = (
+  tests: ExecutableParams
+): { [id: string]: ExecutableParams } =>
   _.groupBy(tests, test => {
     if (!test.function) {
-      throw new Error(`Test ${test.testDescription} does not hava a testable function. Did you export it?`);
+      throw new Error(
+        `Test ${test.testDescription} does not hava a testable function. Did you export it?`
+      );
     }
 
     return test.function.name;
@@ -41,7 +45,9 @@ const execute = (executableParams: ExecutableParams) =>
   _(executableParams)
     .thru(groupTestsByFuncName)
     .thru(groupedTests =>
-      _.forOwn(groupedTests, (executableParams, funcName) => executeTestGroup(executableParams, funcName))
+      _.forOwn(groupedTests, (executableParams, funcName) =>
+        executeTestGroup(executableParams, funcName)
+      )
     )
     .commit();
 
