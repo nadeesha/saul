@@ -1,6 +1,6 @@
-![](https://circleci.com/gh/nadeesha/saul/tree/master.svg?style=svg) 
+![Build Status](https://circleci.com/gh/nadeesha/saul/tree/master.svg?style=svg) 
 
-<img src="https://s3.amazonaws.com/nadeesha-static/Screen+Shot+2017-08-15+at+11.47.47+PM.png" alt="saul intro" style="height: 50px;"/>
+![Saul - Introduction](https://s3.amazonaws.com/nadeesha-static/Screen+Shot+2017-08-15+at+11.47.47+PM.png)
 
 ![Demo](https://s3.amazonaws.com/nadeesha-misc/saul+demo+gif.gif)
 
