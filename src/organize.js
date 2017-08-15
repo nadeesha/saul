@@ -23,7 +23,7 @@ const getArgsContext = () => ({
   spy: generateSpy
 });
 
-function parseArgsFn (argsString: string) {
+function parseArgsFn(argsString: string) {
   try {
     // eslint-disable-next-line no-eval
     return eval(
@@ -55,11 +55,7 @@ export const getEngineModule = (engineName, requireFile = require) => {
       return requireFile(userModule).default;
     }
   } catch (e) {
-    try {
-      return requireFile(`./engines/${engineName}.js`).default;
-    } catch (e) {
-      throw e.message;
-    }
+    return requireFile(`./engines/${engineName}.js`).default;
   }
 };
 

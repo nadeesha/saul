@@ -1,3 +1,17 @@
+import path from 'path';
+import _ from 'lodash';
+import fs from 'fs';
+import assert from 'assert';
+
+const getSnapshotDir = () => path.join(process.cwd(), 'saul_snapshots');
+
+// @t "gets file" getSnapshotFile(function tada() {}, 'foo') ~matches-snapshot
+export const getSnapshotFile = (func, testDescription) =>
+  `${func.name}-${_.kebabCase(testDescription)}.snap`;
+
+// @t "gets foo" getFoo() ~matches-snapshot
+export const getFoo = () => 'bar';
+
 /* istanbul ignore next */
 export default (
   testDescription: string,
@@ -8,26 +22,35 @@ export default (
   { getSpy }
 ) => {
   test(testDescription, () => {
-    const result = func.apply(null, argsArray);
-    const spy = getSpy;
+    if (!fs.existsSync(getSnapshotDir())) {
+      fs.mkdirSync(getSnapshotDir());
+    }
 
-    (function evaluate () {
-      // eslint-disable-next-line no-eval
-      eval(
-        `
-        const expect = this.expect;
-        const assert = this.assert;
-        const spy = this.spy;
-        const $result = this.result;
+    const snapshotPath = path.join(
+      getSnapshotDir(),
+      getSnapshotFile(func, testDescription)
+    );
 
-        ${expected.indexOf('expect(') > 0 ? expected : `assert(${expected})`}
-        `
-      );
-    }.call({
-      expect,
-      spy,
-      assert,
-      result
-    }));
+    const actualContent = JSON.stringify(func.apply(null, argsArray));
+
+    if (!fs.existsSync(snapshotPath)) {
+      fs.writeFileSync(snapshotPath, actualContent, {
+        encoding: 'utf-8'
+      });
+
+      console.log(`New snapshot recorded for ${func.name}: ${testDescription}`);
+
+      return;
+    }
+
+    let snapshotContent;
+
+    snapshotContent = fs.readFileSync(snapshotPath, 'utf-8');
+
+    // expect(snapshotContent).to.equal(actualContent);
+    assert(
+      snapshotContent === actualContent,
+      `Expected ${snapshotContent} to equal ${actualContent}. If you want to rebuild the snapshot: rm ${snapshotPath}`
+    );
   });
 };

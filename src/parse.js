@@ -30,7 +30,7 @@ export const composeArgs = (match: string[]): TestParams => {
 };
 
 export const composeParams = (fileContent: string): Array<TestParams> => {
-  const testLine: RegExp = /(?:\/\/\s@t\s)(".*")(?:[^\w])+([\w|\.]+)\((.*)(?:\)[^\w])+~((?:\w|-)+)(?:[\s])+(.+)/g;
+  const testLine: RegExp = /(?:\/\/\s@t\s)(".*")(?:[^\w])+([\w|\.]+)\((.*)(?:\)[^\w])+~((?:\w|-)+)(?:[\s]?)+(.*)/g;
 
   let match;
   let paramsArray = [];

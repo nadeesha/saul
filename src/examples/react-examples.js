@@ -1,8 +1,6 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 
-// @t "has thumbnailImage" Thumbnail({thumbnailImage: 'fake'}) ~expect-spy expect(JSON.stringify(result)).to.equal('foo')
-// - @t "has pill" Thumbnail({isNew: true}) ~~matches-snapshot
-// - @t "has auction date" Thumbnail({formatAuctionDate: () => 'auczdate'}) ~matches-snapshot
+// @t "can render" Thumbnail({isNew: true}) ~matches-snapshot
 export const Thumbnail = ({
   thumbnailImage,
   isNew,
@@ -10,7 +8,7 @@ export const Thumbnail = ({
   brandingLogoUrl,
   brandingColor,
   styles = {},
-  formatAuctionDate = function noop () {},
+  formatAuctionDate = function noop() {},
   Branding = 'div',
   brandingStyles = {}
 }) =>
