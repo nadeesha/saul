@@ -9,6 +9,9 @@ export default (
 ) => {
   test(testDescription, () => {
     const actual = () => func.apply(null, argsArray);
-    expect(actual).to.throw(eval(`${expected}`)); // eslint-disable-line no-eval
+
+    const shouldThrow = eval(`${expected}`); // eslint-disable-line no-eval
+
+    shouldThrow ? expect(actual).to.throw() : expect(actual).to.not.throw();
   });
 };

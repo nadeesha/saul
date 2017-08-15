@@ -15,7 +15,10 @@ export type ExecutableParams = {
     component: Function,
     argsArray: Array<any>,
     expected: string,
-    test: (desc: string, fn: () => void) => void
+    test: (desc: string, fn: () => void) => void,
+    context: {
+      spies: any[] // todo:
+    }
   ) => void,
   output: string
 };

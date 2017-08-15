@@ -1,35 +1,14 @@
-Saul
-====
-Dynamic unit test generation for pure javascript functions. 
+![Build Status](https://circleci.com/gh/nadeesha/saul/tree/master.svg?style=svg) [![npm version](https://badge.fury.io/js/saul.svg)](https://badge.fury.io/js/saul)
+
+![Saul - Introduction](https://s3.amazonaws.com/nadeesha-static/Screen+Shot+2017-08-15+at+11.47.47+PM.png)
 
 ![Demo](https://s3.amazonaws.com/nadeesha-misc/saul+demo+gif.gif)
 
 # What is it?
 
-Saul likes to generate tests for your pure functions when you don't feel like writing them yourself.
+Saul likes to generate self-documenting tests for your pure functions.
 
-Suppose that you have a simple function like this.
-
-```js
-function shouldCallSaul(threatLevel) {
-    if (threatLevel === 'imminent') {
-        return true;
-    }
-
-    return false;
-}
-```
-
-But now, you got a problem. This NEEDS to be tested. Writing a test with `describe` and `it` is fine - but your test file would be longer than the function itself. Not a problem? I'm happy for you. You're better than most of us. But the rest of us - we better call Saul.
-
-Imagine that you can just leave a comment out in the file with...
-
-```js
-// @t "should call saul when the threat is imminent"        shouldCallSaul('imminent') equals true
-// @t "should not call saul when threat is not imminent"    shouldCallSaul('nodanger') equals false
-```
-
-...And it'll dynamically generate the tests for you when you run your test framework? (ex: `mocha`). Well, in a shell, that's what it does. Your fully tested pure function would now look like:
+A simple example might look like:
 
 ```js
 // @t "should call saul when the threat is imminent"        shouldCallSaul('imminent') equals true
@@ -42,61 +21,100 @@ function shouldCallSaul(threatLevel) {
     return false;
 }
 ```
+
+# What problems does it solve?
+
+- Avoid writing unnecessary boilerplate code for trivial tests
+- Quickly test functionality with `// @t` annotations in your code
+- Have your tests co-located to the functionality it tests
+- Self-document your functionality with a custom DSL
 
 # What more can it do?
 
-### calls-spy
-Checks whether a test spy is called 
+### expect
+Assert the result using chai's expect. Comes with test spy support.
+
+Example:
 ```js
-// @t "reads file" getFileContent('fakeFilePath', 'spyFoo') calls-spy true
+// @t "appends foo" appendFoo('bar') ~expect expect(result).to.contain('foo');
+// @t "has no fizz" appendFoo('bar') ~expect expect(result).to.not.contain('fizz');
+export function appendFoo (someString) {
+    return someString + 'foo';
+}
 ```
 
-### calls-spy-with
-Checks whether a test spy is called with the expected value
+With spy support:
 ```js
-// @t "reads file" getFileContent('fakeFilePath', 'spyFoo') calls-spy-with fakeFilePath
+// @t "calls only once"   testEvalSpy(spy('mySpy')) ~expect spy('mySpy').calledOnce
+// @t "calls with obj"    testEvalSpy(spy('myOtherSpy'), {leet: 1337}) ~expect expect(spy('myOtherSpy').args[0][1]).to.eql([{leet: 1337}])
+export function testEvalSpy (fn, obj) {
+  fn('foo', obj);
+}
 ```
 
-### contains-dom
-Checks whether the given emmet expression exists within the generated DOM
+### matches-snapshot
+Checks whether a previously saved snapshot image of the function's serialized output, matches the current output. (Saves a snapshot file on the first run - that should be checked in to the repo).
+
 ```js
-// @t "has new div" List({items: [1, 2]}) contains-dom li.item{1}
+// @t Date({dateString: '1970-03-11'}) ~matches-snapshot
+export function Date(props) {
+    return <div className={'mydate'}>{props.dateString}</div>
+}
+
+// @t getAllMonths() ~matches-snapshot
+export function getAllMonths() {
+    return CONSTANTS.ALL_MONTHS.join('_');
+}
 ```
+
 
 ### contains
-Checks whether the output contains the expected value
+Checks whether the output contains the expected value.
+
+Example:
 ```js
 // @t "can concat" concatanate('string1', 'something els') contains 'string1'
+export function concatanate (a, b) {
+    return a + b;
+}
 ```
 
 ### deep-equal
 Checks whether the expected value is deep equal to actual value
+
+Example:
 ```js
 // @t "assigns correctly" myAssign({ foo: 1 }, { foo: 2}) deep-equals { foo: 2 }
+export function myAssign(base, other) {
+    return { ...base, ...other };
+}
 ```
 
 ### equals
 Checks whether the expected value is equal to the actual value
 ```js
 // @t "can sum" sum(1, 2) equals 3
+export function sum(numOne, numTwo) {
+    return numOne + numTwo;
+}
 ```
 
 ### is-not
 Checks whether the expected value is not equal to the actual value. (Opposite of `equals`)
 ```js
 // @t "can sum" sum(1, 2) is-not 4
-```
-
-### matches-dom
-Checks whether the given emmet expression matches the generated DOM
-```js
-// @t "has new div" FooSpan({children: 'bar'}) matches-dom span#foo{bar}
+export function sum(numOne, numTwo) {
+    return numOne + numTwo;
+}
 ```
 
 ### throws
 Checks whether the invokation would throw.
 ```js
 // @t "throws on null engine" executeTest({engine: null}) throws Error
+export executeTest(options) {
+    options.engine('foobar');
+}
 ```
 
 And more! See: [extending saul](#extending).

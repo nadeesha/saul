@@ -3,13 +3,22 @@ import fs from 'fs';
 
 import { TestParams } from './types';
 
-// @t "reads file" getFileContent('fakeFilePath', 'spyFoo') calls-spy-with fakeFilePath
-export const getFileContent = (filepath: string, readFile: typeof fs.readFileSync = fs.readFileSync): string =>
-  readFile(filepath, 'utf-8');
+// @t "reads file" getFileContent('fakeFilePath', spy('reader')) ~expect-spy expect(spy('reader').calledOnce).to.equal(true)
+export const getFileContent = (
+  filepath: string,
+  readFile: typeof fs.readFileSync = fs.readFileSync
+): string => readFile(filepath, 'utf-8');
 
-// @t "not foo" composeArgs(['1', '2']) is-not foo
+// @t "not foo" composeArgs(['1', '2']) ~is-not foo
 export const composeArgs = (match: string[]): TestParams => {
-  const [fullMatch, testDescription, funcName, args, engineName, output] = match; // eslint-disable-line no-unused-vars
+  const [
+    fullMatch,
+    testDescription,
+    funcName,
+    args,
+    engineName,
+    output
+  ] = match; // eslint-disable-line no-unused-vars
 
   return {
     args,
@@ -21,7 +30,7 @@ export const composeArgs = (match: string[]): TestParams => {
 };
 
 export const composeParams = (fileContent: string): Array<TestParams> => {
-  const testLine: RegExp = /(?:\/\/\s@t\s)(".*")(?:[^\w])+([\w|\.]+)\((.*)(?:\)[^\w])+((?:\w|-)+)(?:[\s])+(.+)/g;
+  const testLine: RegExp = /(?:\/\/\s@t\s)(".*")(?:[^\w])+([\w|\.]+)\((.*)(?:\)[^\w])+~((?:\w|-)+)(?:[\s]?)+(.*)/g;
 
   let match;
   let paramsArray = [];
