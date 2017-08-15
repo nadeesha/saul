@@ -48,11 +48,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ncthis/saul"
+    "url": "https://github.com/nadeesha/saul"
   },
   "nyc": {
-    "include": [
-      "src/**/*.js"
-    ]
+    "include": ["src/**/*.js"]
   }
 }
