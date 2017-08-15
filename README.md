@@ -1,12 +1,15 @@
 Saul
 ====
+
+![](https://circleci.com/gh/nadeesha/saul/tree/master.svg?style=svg) 
+
 Dynamic unit test generation for pure javascript functions. 
 
 ![Demo](https://s3.amazonaws.com/nadeesha-misc/saul+demo+gif.gif)
 
 # What is it?
 
-Saul likes to generate self-documenting tests for your pure functions. 
+Saul likes to generate self-documenting tests for your pure functions.
 
 A simple example might look like:
 
