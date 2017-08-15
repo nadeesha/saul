@@ -1,6 +1,6 @@
 {
   "name": "saul",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "An extensible dynamic unit test generator.",
   "main": "lib/index.js",
   "scripts": {
@@ -48,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ncthis/saul"
+    "url": "https://github.com/nadeesha/saul"
   },
   "nyc": {
     "include": [

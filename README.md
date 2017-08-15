@@ -6,7 +6,7 @@
 
 # What is it?
 
-Saul likes to generate self-documenting tests for your pure functions.
+`saul` gives you a custom DSL that will help you write test framework agnostic unit tests for your javascript functions.
 
 A simple example might look like:
 
@@ -29,7 +29,50 @@ function shouldCallSaul(threatLevel) {
 - Have your tests co-located to the functionality it tests
 - Self-document your functionality with a custom DSL
 
-# What more can it do?
+# Installation
+
+### 1. Install `saul` as a dev dependency: 
+
+```sh
+yarn add --dev saul
+```
+
+### 2. Create a `.saulrc` in the root.
+
+example:
+```js
+{
+    "fileGlob": "src/**/*.js",                      // files that contain the saul comments
+    "customEnginesDir": "./src/custom-saul-engines" // optional: dir where you will put custom engine .js files
+}
+```
+
+### 3. Invoke saul from your test. 
+
+#### Mocha/Jasmine
+
+If you have some mocha tests already, your `npm test` would look like: `mocha src/**/.js`. Simple add `saul`'s bin (`node_modules/.bin/saul`) right at the end:
+
+```sh
+mocha lib/*.test.js" node_modules/.bin/saul
+```
+
+#### Jest
+
+Since jest requires a regex pattern for test files, you will have to create a file with a single file with a `require`, that will be matched by your jest `regexPattern`.
+
+Example:
+```js
+require('saul'); // will run all saul tests here
+```
+
+## Usage with Babel
+
+Any transformation that you apply to your tests will be inherited by saul when you run your tests. If you're running babel, this will include anything that you define in your local `.babelrc`.
+
+For an instance, if you want to feed babel-transformed files to mocha, you will invoke mocha with `mocha --compilers js:babel-register`. You can simply add saul to the end of the command. (`mocha --compilers js:babel-register node_modules/.bin/saul`) - and things will Just Work™.
+
+# DSL Specification and Examples
 
 ### expect
 Assert the result using chai's expect. Comes with test spy support.
@@ -119,7 +162,7 @@ export executeTest(options) {
 
 And more! See: [extending saul](#extending).
 
-## Extending Saul <a name="extending"></a>
+# Extending `saul` <a name="extending"></a>
 
 Then engines are the "comparator" in the tests.
 
@@ -135,50 +178,9 @@ The "engines", are responsible for generating the tests. So, as long as you buil
 
 The default engines can do a few cool things out of the box. (check the `src/engines/` directory). You can always write your own engines and put them in your `customEnginesDir` defined in `.saulrc`.
 
-## Installation
-
-### 1. Install Saul as a dev dependency: `yarn add --dev saul`
-
-### 2. Create a `.saulrc` in the root.
-
-example:
-```js
-{
-    "fileGlob": "src/**/*.js",                      // files that contain the saul comments
-    "customEnginesDir": "./src/custom-saul-engines" // optional: dir where you will put custom engine .js files
-}
-```
-
-### 3. Invoke saul from your test. 
-
-#### Mocha/Jasmine
-
-If you have some mocha tests already, your `npm test` would look like: `mocha src/**/.js`. Simple add Saul's bin (`node_modules/.bin/saul`) right at the end:
-
-```sh
-mocha lib/*.test.js" node_modules/.bin/saul
-```
-#### Jest
-
-Since jest requires a regex pattern for test files, you will have to create a file with a single file with a `require`, that will be matched by your jest `regexPattern`.
-
-Example:
-```js
-// saul-runner.test.js
-require('saul');
-```
-
-NOTE: If you have your tests file inside the `__tests__` directory, make sure to put this file there.
-
-## Usage with Babel
-
-Any transformation that you apply to your tests will be inherited by saul when you run your tests. If you're running babel, this will include anything that you define in your local `.babelrc`.
-
-For an instance, if you want to feed babel-transformed files to mocha, you will invoke mocha with `mocha --compilers js:babel-register`. You can simply add saul to the end of the command. (`mocha --compilers js:babel-register node_modules/.bin/saul`) - and things will Just Work™.
-
 # Examples
 
-Just give a read through this repo. Saul is tested with Saul! :rocket:
+Just look through this repo for `// @t` annotated tests. `saul` is tested with `saul`! :rocket:
 
 # Contributions
 
