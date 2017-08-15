@@ -99,12 +99,12 @@ export function testEvalSpy (fn, obj) {
 Checks whether a previously saved snapshot image of the function's serialized output, matches the current output. (Saves a snapshot file on the first run - that should be checked in to the repo).
 
 ```js
-// @t Date({dateString: '1970-03-11'}) ~matches-snapshot
+// @t "should render Date" Date({dateString: '1970-03-11'}) ~matches-snapshot
 export function Date(props) {
     return <div className={'mydate'}>{props.dateString}</div>
 }
 
-// @t getAllMonths() ~matches-snapshot
+// @t "returns all months" getAllMonths() ~matches-snapshot
 export function getAllMonths() {
     return CONSTANTS.ALL_MONTHS.join('_');
 }
