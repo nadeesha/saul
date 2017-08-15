@@ -1,4 +1,4 @@
-![Build Status](https://circleci.com/gh/nadeesha/saul/tree/master.svg?style=svg) 
+![Build Status](https://circleci.com/gh/nadeesha/saul/tree/master.svg?style=svg) [![npm version](https://badge.fury.io/js/saul.svg)](https://badge.fury.io/js/saul)
 
 ![Saul - Introduction](https://s3.amazonaws.com/nadeesha-static/Screen+Shot+2017-08-15+at+11.47.47+PM.png)
 
@@ -21,6 +21,13 @@ function shouldCallSaul(threatLevel) {
     return false;
 }
 ```
+
+# What problems does it solve?
+
+- Avoid writing unnecessary boilerplate code for trivial tests
+- Quickly test functionality with `// @t` annotations in your code
+- Have your tests co-located to the functionality it tests
+- Self-document your functionality with a custom DSL
 
 # What more can it do?
 
