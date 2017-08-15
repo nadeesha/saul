@@ -9,7 +9,8 @@
     "start": "node ./lib/index.js",
     "build": "babel src --out-dir lib",
     "watch": "babel --watch src --out-dir lib",
-    "prepublish": "yarn run build"
+    "prepublish": "yarn run build",
+    "self-test": "yarn build && rm -rf node_modules/saul/lib && cp -R lib node_modules/saul/ && yarn unit-tests"
   },
   "author": "Nadeesha Cabral <nadeesha.cabral@gmail.com>",
   "license": "MIT",
@@ -50,8 +51,6 @@
     "url": "https://github.com/ncthis/saul"
   },
   "nyc": {
-    "include": [
-      "src/**/*.js"
-    ]
+    "include": ["src/**/*.js"]
   }
 }
