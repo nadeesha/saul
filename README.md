@@ -22,6 +22,13 @@ function shouldCallSaul(threatLevel) {
 }
 ```
 
+# What problems does it solve?
+
+- Avoid writing unnecessary boilerplate code for trivial tests
+- Quickly test functionality with `// @t` annotations in your code
+- Have your tests co-located to the functionality it tests
+- Self-document your functionality with a custom DSL
+
 # What more can it do?
 
 ### expect
