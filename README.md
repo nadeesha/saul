@@ -1,9 +1,6 @@
-Saul
-====
-
 ![](https://circleci.com/gh/nadeesha/saul/tree/master.svg?style=svg) 
 
-Dynamic unit test generation for pure javascript functions. 
+![](https://s3.amazonaws.com/nadeesha-static/Screen+Shot+2017-08-15+at+11.47.47+PM.png)
 
 ![Demo](https://s3.amazonaws.com/nadeesha-misc/saul+demo+gif.gif)
 
