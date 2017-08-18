@@ -133,6 +133,19 @@ export function myAssign(base, other) {
 }
 ```
 
+### async-deep-equal
+Checks whether the expected value is deep equal to actual value returned in an asynchronous function.
+
+Example:
+```js
+// @t "request result as expected" fetchSomething() ~async-deep-equals { foo: 2 }
+export function fetchSomething() {
+    return new Promise((resolve, reject) => {
+        resolve { foo: 2 };
+    });
+}
+```
+
 ### equals
 Checks whether the expected value is equal to the actual value
 ```js
