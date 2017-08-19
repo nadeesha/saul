@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 
+/* istanbul ignore next */
 export default (
   testDescription: string,
   func: Function,
