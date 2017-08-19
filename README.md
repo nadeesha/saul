@@ -2,7 +2,7 @@
 
 ![Saul - Introduction](https://s3.amazonaws.com/nadeesha-static/Screen+Shot+2017-08-15+at+11.47.47+PM.png)
 
-![Demo](https://s3.amazonaws.com/nadeesha-misc/saul+demo+gif.gif)
+[![Demo](https://asciinema.org/a/JVXpt7KB7qbUkgsGBDISUtXJB.png)](https://asciinema.org/a/JVXpt7KB7qbUkgsGBDISUtXJB)
 
 # What is it?
 
@@ -11,8 +11,8 @@
 A simple example might look like:
 
 ```js
-// @t "should call saul when the threat is imminent"        shouldCallSaul('imminent') equals true
-// @t "should not call saul when threat is not imminent"    shouldCallSaul('nodanger') equals false
+// @t "should call saul when the threat is imminent"        shouldCallSaul('imminent') ~equals true
+// @t "should not call saul when threat is not imminent"    shouldCallSaul('nodanger') ~equals false
 function shouldCallSaul(threatLevel) {
     if (threatLevel === 'imminent') {
         return true;
@@ -116,7 +116,7 @@ Checks whether the output contains the expected value.
 
 Example:
 ```js
-// @t "can concat" concatanate('string1', 'something els') contains 'string1'
+// @t "can concat" concatanate('string1', 'something els') ~contains 'string1'
 export function concatanate (a, b) {
     return a + b;
 }
@@ -127,16 +127,29 @@ Checks whether the expected value is deep equal to actual value
 
 Example:
 ```js
-// @t "assigns correctly" myAssign({ foo: 1 }, { foo: 2}) deep-equals { foo: 2 }
+// @t "assigns correctly" myAssign({ foo: 1 }, { foo: 2}) ~deep-equals { foo: 2 }
 export function myAssign(base, other) {
     return { ...base, ...other };
+}
+```
+
+### async-deep-equal
+Checks whether the expected value is deep equal to actual value returned in an asynchronous function.
+
+Example:
+```js
+// @t "request result as expected" fetchSomething() ~async-deep-equals { foo: 2 }
+export function fetchSomething() {
+    return new Promise((resolve, reject) => {
+        resolve { foo: 2 };
+    });
 }
 ```
 
 ### equals
 Checks whether the expected value is equal to the actual value
 ```js
-// @t "can sum" sum(1, 2) equals 3
+// @t "can sum" sum(1, 2) ~equals 3
 export function sum(numOne, numTwo) {
     return numOne + numTwo;
 }
@@ -145,7 +158,7 @@ export function sum(numOne, numTwo) {
 ### is-not
 Checks whether the expected value is not equal to the actual value. (Opposite of `equals`)
 ```js
-// @t "can sum" sum(1, 2) is-not 4
+// @t "can sum" sum(1, 2) ~is-not 4
 export function sum(numOne, numTwo) {
     return numOne + numTwo;
 }
@@ -154,7 +167,7 @@ export function sum(numOne, numTwo) {
 ### throws
 Checks whether the invokation would throw.
 ```js
-// @t "throws on null engine" executeTest({engine: null}) throws Error
+// @t "throws on null engine" executeTest({engine: null}) ~throws Error
 export executeTest(options) {
     options.engine('foobar');
 }
@@ -167,12 +180,15 @@ And more! See: [extending saul](#extending).
 Then engines are the "comparator" in the tests.
 
 ```js
-// @t "has new pill" Thumbnail({isNew: true}) contains-dom div#foo{New}                   ===> contains-dom
-// @t "reads file" getFileContent('fakeFilePath', 'spyFoo') calls-spy-with fakeFilePath   ===> calls-spy-with
-// @t "throws on null engine" executeTest({engine: null}) throws Error                    ===> throws
+// @t "throws on null engine" executeTest({engine: null}) ~throws Error
+                                      |                      |      └ expected value
+                                      |                      |
+                                      |                      └ comparator
+                                      |
+                                      └ actutal value
 ```
 
-They are handled by the file of that name in `src/engines`. (Example: `src/engines/contains-dom.js`)
+They are handled by the file of that name in `src/engines/`. (Example: `src/engines/throws.js`)
 
 The "engines", are responsible for generating the tests. So, as long as you build a custom engine - it can pretty much test anything. 
 
