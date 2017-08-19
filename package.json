@@ -23,7 +23,7 @@
     "glob": "^7.1.2",
     "lodash": "^4.17.4",
     "react": "^15.5.4",
-    "saul": "0.2.0-2",
+    "saul": "0.3.0",
     "sinon": "^2.2.0",
     "unescape": "^0.2.0"
   },
@@ -51,8 +51,6 @@
     "url": "https://github.com/nadeesha/saul"
   },
   "nyc": {
-    "include": [
-      "src/**/*.js"
-    ]
+    "include": ["src/**/*.js"]
   }
 }
