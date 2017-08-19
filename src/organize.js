@@ -33,25 +33,33 @@ function parseArgsFn(argsString: string) {
     `
     );
   } catch (e) {
-    throw new Error(`Possible syntax error in your args: ${argsString}`);
+    throw new Error(
+      `Possible syntax error in your args: ${argsString} (${e.message})`
+    );
   }
 }
 
-// @t "parses correctly"            parseArgs("0") ~deep-equals [0]
-// @t "parses multiple values"      parseArgs("12, 15") ~deep-equals [12, 15]
+// @t "parses correctly"            parseArgs("0") ~equals [0]
+// @t "parses multiple values"      parseArgs("12, 15") ~equals [12, 15]
 // @t "accepts spies"               parseArgs("spy('foo'), 15") ~throws false
 // @t "throws on invalid spies"     parseArgs("spyz('0'), 15") ~throws true
 export const parseArgs = parseArgsFn.bind(getArgsContext());
 
-export const getEngineModule = (engineName, requireFile = require) => {
+// @t "gets file"   getEngineModule('eng', () => ({ default: 'file' }), () => {}, () => true) ~equals 'file'
+export const getEngineModule = (
+  engineName,
+  requireFile = require,
+  joinPath = path.join,
+  fileExists = fs.statSync
+) => {
   try {
-    const userModule = path.join(
+    const userModule = joinPath(
       process.cwd(),
       getConfig().customEnginesDir,
       `${engineName}.js`
     );
 
-    if (fs.statSync(userModule) && requireFile(userModule).default) {
+    if (fileExists(userModule) && requireFile(userModule).default) {
       return requireFile(userModule).default;
     }
   } catch (e) {
@@ -59,6 +67,7 @@ export const getEngineModule = (engineName, requireFile = require) => {
   }
 };
 
+/* istanbul ignore next */
 export default (
   filepath: string,
   testParams: TestParams

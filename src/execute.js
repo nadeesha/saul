@@ -17,7 +17,7 @@ export const groupTestsByFuncName = (
     return test.function.name;
   });
 
-// @t "executes with engine" executeTest({engine: () => 'result'}) ~deep-equals 'result'
+// @t "executes with engine" executeTest({engine: () => 'result'}) ~equals 'result'
 // @t "throws on invalid" executeTest({engine: null}) ~throws Error
 export const executeTest = (executableParams: ExecutableParams) =>
   executableParams.engine(
