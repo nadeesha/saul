@@ -110,6 +110,21 @@ export function getAllMonths() {
 }
 ```
 
+### equals
+Checks whether the expected value is equal to the actual value. If the function returns a promise, resolves it before asserting
+```js
+// @t "can sum" sum(1, 2) ~equals 3
+export function sum(numOne, numTwo) {
+    return numOne + numTwo;
+}
+
+// @t "testEqualsAsync" testEqualsAsync() ~equals 'foo'
+export function testEqualsAsync() {
+  return new Promise((resolve, reject) => {
+    resolve('foo');
+  });
+}
+```
 
 ### contains
 Checks whether the output contains the expected value.
@@ -119,39 +134,6 @@ Example:
 // @t "can concat" concatanate('string1', 'something els') ~contains 'string1'
 export function concatanate (a, b) {
     return a + b;
-}
-```
-
-### deep-equal
-Checks whether the expected value is deep equal to actual value
-
-Example:
-```js
-// @t "assigns correctly" myAssign({ foo: 1 }, { foo: 2}) ~deep-equals { foo: 2 }
-export function myAssign(base, other) {
-    return { ...base, ...other };
-}
-```
-
-### async-deep-equal
-Checks whether the expected value is deep equal to actual value returned in an asynchronous function.
-
-Example:
-```js
-// @t "request result as expected" fetchSomething() ~async-deep-equals { foo: 2 }
-export function fetchSomething() {
-    return new Promise((resolve, reject) => {
-        resolve { foo: 2 };
-    });
-}
-```
-
-### equals
-Checks whether the expected value is equal to the actual value
-```js
-// @t "can sum" sum(1, 2) ~equals 3
-export function sum(numOne, numTwo) {
-    return numOne + numTwo;
 }
 ```
 
@@ -205,6 +187,6 @@ Please! Here are som TODOs that need being done.
 - [ ] More engines! (If you would like to contribute an engine, please take a look at the engine files at `src/engines`)
 - [ ] Documentation on writing engines.
 - [ ] Extending the parsers for fixtures
-- [ ] Better error handling for engines
-- [ ] Tests for existing engines
+- [x] Better error handling for engines
+- [x] Tests for existing engines
 
