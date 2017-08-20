@@ -75,7 +75,7 @@ For an instance, if you want to feed babel-transformed files to mocha, you will 
 # DSL Specification and Examples
 
 ### expect
-Assert the result using chai's expect. Comes with test spy support.
+Assert the result using chai's expect. Comes with test spy support from [sinon](sinonjs.org/releases/v2.0.0/spies/).
 
 Example:
 ```js
@@ -87,6 +87,9 @@ export function appendFoo (someString) {
 ```
 
 With spy support:
+
+Calling `spy(name: string)`, will create a [sinon spy](sinonjs.org/releases/v2.0.0/spies/). You can assert on any of it's methods/properties like this:
+
 ```js
 // @t "calls only once"   testEvalSpy(spy('mySpy')) ~expect spy('mySpy').calledOnce
 // @t "calls with obj"    testEvalSpy(spy('mySpy2'), 'foo') ~expect spy('mySpy2').calledWith('foo')
