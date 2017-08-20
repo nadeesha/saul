@@ -89,9 +89,9 @@ export function appendFoo (someString) {
 With spy support:
 ```js
 // @t "calls only once"   testEvalSpy(spy('mySpy')) ~expect spy('mySpy').calledOnce
-// @t "calls with obj"    testEvalSpy(spy('myOtherSpy'), {leet: 1337}) ~expect expect(spy('myOtherSpy').args[0][1]).to.eql([{leet: 1337}])
-export function testEvalSpy (fn, obj) {
-  fn('foo', obj);
+// @t "calls with obj"    testEvalSpy(spy('mySpy2'), 'foo') ~expect spy('mySpy2').calledWith('foo')
+export function testEvalSpy (fn, str) {
+  fn('foo', str);
 }
 ```
 
