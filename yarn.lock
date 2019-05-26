@@ -2601,6 +2601,10 @@ lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.0, lo
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
+lodash@^4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+
 lolex@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/lolex/-/lolex-1.6.0.tgz#3a9a0283452a47d7439e72731b9e07d7386e49f6"
@@ -3460,6 +3464,54 @@ saul@0.0.17:
     lodash "^4.17.4"
     react "^15.5.4"
     saul "0.0.16"
+    sinon "^2.2.0"
+    unescape "^0.2.0"
+
+saul@0.2.0-0:
+  version "0.2.0-0"
+  resolved "https://registry.yarnpkg.com/saul/-/saul-0.2.0-0.tgz#07537c51ba3d8ee87efbe915f3c9dab7ca4281b3"
+  dependencies:
+    "@emmetio/expand-abbreviation" "^0.5.6"
+    babel-register "^6.24.1"
+    chai "^3.5.0"
+    enzyme "^2.8.2"
+    flow-remove-types "^1.2.1"
+    glob "^7.1.2"
+    lodash "^4.17.4"
+    react "^15.5.4"
+    saul "0.0.17"
+    sinon "^2.2.0"
+    unescape "^0.2.0"
+
+saul@0.2.0-2:
+  version "0.2.0-2"
+  resolved "https://registry.yarnpkg.com/saul/-/saul-0.2.0-2.tgz#a83563e09acf3b44fb2b45253385c6bca5b94d55"
+  dependencies:
+    "@emmetio/expand-abbreviation" "^0.5.6"
+    babel-register "^6.24.1"
+    chai "^3.5.0"
+    enzyme "^2.8.2"
+    flow-remove-types "^1.2.1"
+    glob "^7.1.2"
+    lodash "^4.17.4"
+    react "^15.5.4"
+    saul "0.2.0-0"
+    sinon "^2.2.0"
+    unescape "^0.2.0"
+
+saul@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/saul/-/saul-0.3.0.tgz#7d0ec1ad7ab533dd3c98b22a246680388d708582"
+  dependencies:
+    "@emmetio/expand-abbreviation" "^0.5.6"
+    babel-register "^6.24.1"
+    chai "^3.5.0"
+    enzyme "^2.8.2"
+    flow-remove-types "^1.2.1"
+    glob "^7.1.2"
+    lodash "^4.17.4"
+    react "^15.5.4"
+    saul "0.2.0-2"
     sinon "^2.2.0"
     unescape "^0.2.0"
 
