@@ -39,7 +39,7 @@
     "eslint": "^3.19.0",
     "eslint-plugin-flowtype": "^2.33.0",
     "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-node": "^4.2.3",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "flow-bin": "^0.46.0",
