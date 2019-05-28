@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@emmetio/expand-abbreviation": "^0.5.6",
-    "babel-register": "^6.24.1",
+    "babel-register": "^6.26.0",
     "chai": "^3.5.0",
     "enzyme": "^2.8.2",
     "flow-remove-types": "^1.2.1",
@@ -31,7 +31,7 @@
     "saul": "./lib/index.js"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-preset-env": "^1.4.0",
     "babel-preset-flow": "^6.23.0",
