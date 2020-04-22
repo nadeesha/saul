@@ -22,6 +22,27 @@
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@emmetio/css-snippets-resolver/-/css-snippets-resolver-0.2.5.tgz#e67b8278212b4621b2d3556922c46dad2f4f0c8d"
 
+"@emmetio/css-snippets-resolver@^0.3.0":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@emmetio/css-snippets-resolver/-/css-snippets-resolver-0.3.1.tgz#b375df74f660fc61b44e9604224487a31be627fb"
+
+"@emmetio/expand-abbreviation@^0.5.10":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@emmetio/expand-abbreviation/-/expand-abbreviation-0.5.10.tgz#e1f49f85e35e5f52a5f12b58c3fb9a03d31ee3fc"
+  dependencies:
+    "@emmetio/abbreviation" "^0.6.1"
+    "@emmetio/css-abbreviation" "^0.3.1"
+    "@emmetio/css-snippets-resolver" "^0.3.0"
+    "@emmetio/html-snippets-resolver" "^0.1.4"
+    "@emmetio/html-transform" "^0.3.2"
+    "@emmetio/lorem" "^1.0.1"
+    "@emmetio/markup-formatters" "^0.3.3"
+    "@emmetio/output-profile" "^0.1.5"
+    "@emmetio/snippets" "^0.2.8"
+    "@emmetio/snippets-registry" "^0.3.1"
+    "@emmetio/stylesheet-formatters" "^0.1.3"
+    "@emmetio/variable-resolver" "^0.2.1"
+
 "@emmetio/expand-abbreviation@^0.5.6":
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/@emmetio/expand-abbreviation/-/expand-abbreviation-0.5.6.tgz#ca8d90d8908553efef0ddd20a704b8e1ddb6fe80"
@@ -98,6 +119,10 @@
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@emmetio/snippets/-/snippets-0.2.3.tgz#73e209fc036dbb9f7c9aa1050038cc68ad082c1a"
 
+"@emmetio/snippets@^0.2.8":
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/@emmetio/snippets/-/snippets-0.2.12.tgz#607a98c9d628f570a0f35961622f6b1f4d381b72"
+
 "@emmetio/stream-reader-utils@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@emmetio/stream-reader-utils/-/stream-reader-utils-0.1.0.tgz#244cb02c77ec2e74f78a9bd318218abc9c500a61"
@@ -109,6 +134,13 @@
 "@emmetio/stylesheet-formatters@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@emmetio/stylesheet-formatters/-/stylesheet-formatters-0.1.2.tgz#3036ed6d8c1e40345e673044b75c3f14986022cf"
+  dependencies:
+    "@emmetio/field-parser" "^0.3.0"
+    "@emmetio/output-renderer" "^0.1.1"
+
+"@emmetio/stylesheet-formatters@^0.1.3":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@emmetio/stylesheet-formatters/-/stylesheet-formatters-0.1.5.tgz#b12a0f1bddb6751a0f1ad334fca1b907ebb34f2c"
   dependencies:
     "@emmetio/field-parser" "^0.3.0"
     "@emmetio/output-renderer" "^0.1.1"

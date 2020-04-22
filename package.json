@@ -15,7 +15,7 @@
   "author": "Nadeesha Cabral <nadeesha.cabral@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@emmetio/expand-abbreviation": "^0.5.6",
+    "@emmetio/expand-abbreviation": "^0.5.10",
     "babel-register": "^6.24.1",
     "chai": "^3.5.0",
     "enzyme": "^2.8.2",
